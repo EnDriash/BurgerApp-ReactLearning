@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/auxillary.js';
+import Aux from '../../hoc/Auxiliary/Auxiliary.js';
 import Burger from '../../components/Burger/Burger.js';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal';
@@ -57,7 +57,7 @@ class BurgerBuilder extends Component {
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + priceAddition;
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
-       this.updatePurchaseState(updatedIngredients);
+        this.updatePurchaseState(updatedIngredients);
     }
         
     removeIngredientHandler = type => {
@@ -84,7 +84,9 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
-                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler.bind(this)}>
+                <Modal 
+                show={this.state.purchasing} 
+                modalClosed={this.purchaseCancelHandler.bind(this)}>
                     <OrderSummary 
                     price={this.state.totalPrice}
                     purchaseCanceled={this.purchaseCancelHandler.bind(this)}
